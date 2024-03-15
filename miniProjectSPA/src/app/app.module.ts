@@ -8,6 +8,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-alt-snotify';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SnotifyModule
   ],
-  providers: [],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults }, 
+    SnotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
